@@ -1,0 +1,16 @@
+.passwordWrapper {
+    position: relative;
+}
+.passwordWrapper input[type=password] {
+    padding-right: 50px;
+}
+.passwordToogler {
+    position: absolute;
+    top: 6px;
+    right: 5px;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: #55595c;
+}
