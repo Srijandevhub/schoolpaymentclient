@@ -3,7 +3,7 @@ import HomePage from "./pages/HomePage"
 import LoginPage from "./pages/LoginPage"
 import DashboardPage from "./pages/DashboardPage"
 import { useEffect } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { checkAuth } from "./utils/userSlice"
 import ProtectedRoute from "./components/ProtectedRoute"
 import TransactionDetailsPage from "./pages/TransactionDetailsPage"
@@ -15,6 +15,12 @@ const App = () => {
     useEffect(() => {
         dispatch(checkAuth());
     }, [dispatch, location.pathname])
+    const mode = useSelector((state) => state.theme.mode);
+    useEffect(() => {
+        if (mode === 'dark') {
+            document.body.setAttribute("data-bs-theme", mode);
+        }
+    }, [mode])
     return (
         <Routes>
             <Route path="/" element={<HomePage />}/>
