@@ -18,7 +18,7 @@ const Login = () => {
                 password
             }, { withCredentials: true });
             if (res.data.ok) {
-                navigate("/dashboard");
+                navigate("/transaction-overview");
             }
         } catch (error) {
             console.log(error.message);
