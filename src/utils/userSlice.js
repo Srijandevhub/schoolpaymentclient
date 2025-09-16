@@ -11,6 +11,18 @@ export const checkAuth = createAsyncThunk("checkAuth/user", async (_, thunkAPI) 
         return thunkAPI.rejectWithValue(error.message);
     }
 })
+export const logout = createAsyncThunk("logout/user", async (_, thunkAPI) => {
+    try {
+        const res = await axios.post(`${baseUrl}/auth/logout`, {}, {
+            withCredentials: true
+        });
+        if (res.status === 200) {
+            return null;
+        }
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+    }
+})
 const userSlice = createSlice({
     name: 'user',
     initialState: {
@@ -32,7 +44,16 @@ const userSlice = createSlice({
         }).addCase(checkAuth.rejected, (state, action) => {
             state.status = 'failed';
             state.error = action.payload;
-        })
+        }).addCase(logout.pending, (state) => {
+            state.status = 'loading';
+        }).addCase(logout.fulfilled, (state) => {
+            state.status = 'success';
+            state.data = null;
+            state.isAuthenticated = false;
+        }).addCase(logout.rejected, (state, action) => {
+            state.status = 'failed';
+            state.error = action.payload;
+        });
     }
 });
 export default userSlice.reducer
