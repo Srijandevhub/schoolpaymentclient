@@ -1,3 +1,49 @@
 .wrapper {
     padding: 10px;
 }
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.table th, .table td {
+    padding: 12px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+.table tbody tr {
+    transition: 0.3s ease-in-out;
+}
+/* .table tbody tr:hover {
+    transform: scale(1.1);
+} */
+.table th {
+    background-color: #ddd;
+}
+.table tbody tr {
+    border-bottom: 1px solid transparent;
+}
+.table tbody tr:hover {
+    transform: scale(1.02);
+    border-color: #ddd;
+}
+.success {
+    display: inline-block;
+    padding: 5px 12px;
+    background-color: #93ed93;
+    border-radius: 60px;
+    font-size: 10px;
+    color: #036d03;
+}
+.pending {
+    display: inline-block;
+    padding: 5px 12px;
+    background-color: #f5f3b3;
+    border-radius: 60px;
+    font-size: 10px;
+    color: #887f02;
+}
+@media only screen and (max-width: 1570px) {
+    .table tbody tr {
+        transform: inherit !important;
+    }
+}
