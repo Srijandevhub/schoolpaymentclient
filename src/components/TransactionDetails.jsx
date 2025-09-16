@@ -79,7 +79,6 @@ const TransactionDetails = () => {
                                         <p className="m-0 fs-6">Entries</p>
                                         <div className={styles.entries}>
                                             <Select style={{ width: '100%' }} value={limit} onChange={(val) => setLimit(val)}>
-                                                <Option value="1">1</Option>
                                                 <Option value="10">10</Option>
                                                 <Option value="20">20</Option>
                                                 <Option value="50">50</Option>
@@ -87,7 +86,7 @@ const TransactionDetails = () => {
                                             </Select>
                                         </div>
                                     </div>
-                                    <div className="table-responsive">
+                                    <div className="tbl-rsp">
                                         <table className={styles.table}>
                                             <thead>
                                                 <tr>
