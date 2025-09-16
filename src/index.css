@@ -22,6 +22,12 @@ body {
 .toogler {
     display: none;
 }
+@media only screen and (max-width: 1570px) {
+    .tbl-rsp {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
 @media only screen and (max-width: 1199px) {
     .display-window {
         padding-left: 0px !important;
