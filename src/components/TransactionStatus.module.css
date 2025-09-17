@@ -16,6 +16,10 @@
 .table th {
     background-color: #ddd;
 }
+body[data-bs-theme="dark"] .table th {
+    background-color: #333;
+    color: #e0e0e0;
+}
 .success {
     display: inline-block;
     padding: 5px 12px;
