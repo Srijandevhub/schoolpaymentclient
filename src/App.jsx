@@ -8,6 +8,8 @@ import { checkAuth } from "./utils/userSlice"
 import ProtectedRoute from "./components/ProtectedRoute"
 import TransactionDetailsPage from "./pages/TransactionDetailsPage"
 import TransactionStatusCheckPage from "./pages/TransactionStatusCheckPage"
+import { ConfigProvider, theme } from "antd"
+import { syncTheme } from "./utils/themeSlice"
 
 const App = () => {
     const dispatch = useDispatch();
@@ -15,20 +17,28 @@ const App = () => {
     useEffect(() => {
         dispatch(checkAuth());
     }, [dispatch, location.pathname])
+    useEffect(() => {
+        dispatch(syncTheme());
+    }, [])
     const mode = useSelector((state) => state.theme.mode);
     useEffect(() => {
-        if (mode === 'dark') {
-            document.body.setAttribute("data-bs-theme", mode);
-        }
+        document.body.setAttribute("data-bs-theme", mode);
     }, [mode])
     return (
-        <Routes>
-            <Route path="/" element={<HomePage />}/>
-            <Route path="/login" element={<ProtectedRoute isAuthpage={true}><LoginPage /></ProtectedRoute>}/>
-            <Route path="/transaction-overview" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>}/>
-            <Route path="/transaction-details" element={<ProtectedRoute><TransactionDetailsPage /></ProtectedRoute>}/>
-            <Route path="/transaction-status-check" element={<ProtectedRoute><TransactionStatusCheckPage /></ProtectedRoute>}/>
-        </Routes>
+        <ConfigProvider
+            theme={{
+                algorithm:
+                mode === 'dark' ? theme.darkAlgorithm : theme.defaultAlgorithm
+            }}
+        >
+            <Routes>
+                <Route path="/" element={<HomePage />}/>
+                <Route path="/login" element={<ProtectedRoute isAuthpage={true}><LoginPage /></ProtectedRoute>}/>
+                <Route path="/transaction-overview" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>}/>
+                <Route path="/transaction-details" element={<ProtectedRoute><TransactionDetailsPage /></ProtectedRoute>}/>
+                <Route path="/transaction-status-check" element={<ProtectedRoute><TransactionStatusCheckPage /></ProtectedRoute>}/>
+            </Routes>
+        </ConfigProvider>
     )
 }
 

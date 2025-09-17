@@ -17,6 +17,10 @@
 .table tbody tr {
     transition: 0.3s ease-in-out;
 }
+body[data-bs-theme="dark"] .table th {
+    background-color: #333;
+    color: #e0e0e0;
+}
 /* .table tbody tr:hover {
     transform: scale(1.1);
 } */

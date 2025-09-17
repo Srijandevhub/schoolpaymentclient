@@ -28,6 +28,13 @@
 .sidebarHeader {
     display: none;
 }
+body[data-bs-theme="dark"] .sidebarLink {
+    color: #e0e0e0;
+}
+body[data-bs-theme="dark"] .sidebarLink:hover, body[data-bs-theme="dark"] .sidebarLink.active {
+    color: #e0e0e0;
+    background-color: #181717;
+}
 @media only screen and (max-width: 1199px) {
     .sidebar {
         position: fixed;

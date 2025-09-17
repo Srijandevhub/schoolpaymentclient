@@ -210,15 +210,15 @@ const Dashboard = () => {
             </Row>
           </div>
           {
-            loading ? <h5 className="text-center">Loading...</h5>
+            loading ? <h5 className="text-center mt-5">Loading...</h5>
             :
             <>
             {
               transactions.length === 0 ?
-              <h3 className="text-center">No Transactions Found</h3>
+              <h3 className="text-center mt-5">No Transactions Found</h3>
               :
               <>
-              <div className="tbl-rsp">
+              <div className="tbl-rsp mt-4">
                 <table className={styles.table}>
                   <thead>
                     <tr>

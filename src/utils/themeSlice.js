@@ -7,8 +7,13 @@ const themeSlice = createSlice({
     reducers: {
         toogleTheme: (state) => {
             state.mode = state.mode === 'light' ? 'dark' : 'light';
+            localStorage.setItem("theme", state.mode);
+        },
+        syncTheme: (state) => {
+            const mode = localStorage.getItem("theme");
+            state.mode = mode;
         }
     }
 })
-export const { toogleTheme } = themeSlice.actions;
+export const { toogleTheme, syncTheme } = themeSlice.actions;
 export default themeSlice.reducer

@@ -2,10 +2,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import styles from './Sidebar.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeSidebar } from '../utils/tooglerSlice';
-import axios from 'axios';
-import { baseUrl } from '../baseUrl';
 import { logout } from '../utils/userSlice';
-import { Form } from 'react-bootstrap';
+import { toogleTheme } from '../utils/themeSlice';
 
 const Sidebar = ({ menuActive = "dashboard" }) => {
     const toogler = useSelector((state) => state.toogler.show);
@@ -56,6 +54,7 @@ const Sidebar = ({ menuActive = "dashboard" }) => {
                 </ul>
             </div>
             <div className='card-footer'>
+                <button className='btn btn-outline-warning btn-sm w-100 mb-1' onClick={() => dispatch(toogleTheme())}>Toogle Theme</button>
                 <button className='btn btn-danger w-100 btn-sm' onClick={handleLogout}>Logout</button>
             </div>
         </div>
